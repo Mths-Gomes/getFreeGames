@@ -1,4 +1,4 @@
-from services.getFreeGamesServices import getFreeGames
+from services.getFreeGamesService import getFreeGames
 
 def main():
     getFreeGames()
