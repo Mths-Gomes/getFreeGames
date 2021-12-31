@@ -18,4 +18,3 @@ def countFreeGames():
     quantity = len(element) - 1
 
     return quantity
-

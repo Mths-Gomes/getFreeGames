@@ -2,9 +2,7 @@ import pyautogui as rb
 import time
 
 from services.countFreeGamesService import countFreeGames
-from services.unableToGetFreeGamesService import unableToGetFreeGames
-from services.sendConfirmationPrintService import sendConfirmationPrint
-
+from services.sendConfirmationPrintService import sendConfirmationPrint, closeBrowser, unableToGetFreeGames
 
 rb.PAUSE = 1
 
@@ -21,6 +19,7 @@ def getFreeGames():
     getOneFreeGames()
   else:
     unableToGetFreeGames()
+    closeBrowser()
 
 def getOneFreeGames():
   # Abre o chrome
@@ -39,7 +38,7 @@ def getOneFreeGames():
 
   #Clica no banner de game gratis
   time.sleep(7)
-  rb.click(386, 523)
+  rb.click(390, 530)
 
   # Pop-up +18
   time.sleep(5)
@@ -58,8 +57,12 @@ def getOneFreeGames():
   rb.click(945, 118)
 
   sendConfirmationPrint()
+  closeBrowser()
 
 def getTwoFreeGames():
+  screenMap = [[320, 530], [660, 530]]
+
+  # Abre o chrome
   rb.press('winleft')
   rb.write('chrome')
   rb.press('enter')
@@ -68,34 +71,40 @@ def getTwoFreeGames():
   # time.sleep(3)
   # rb.click(1017,570)
 
-  #Nova guia e direcionamento Epic Store
-  rb.hotkey('ctrl', 't')
-  rb.write(link)
-  rb.press('enter')
+  for game in screenMap:
+    #Nova guia e direcionamento Epic Store
+    rb.hotkey('ctrl', 't')
+    rb.write(link)
+    rb.press('enter')
 
-  #Clica no banner de game gratis
-  time.sleep(7)
-  rb.click(386, 523)
+    #Clica no banner de game gratis
+    time.sleep(7)
+    rb.click(game[0], game[1])
 
-  # Pop-up +18
-  time.sleep(5)
-  rb.click(688, 469)
+    # Pop-up +18
+    time.sleep(6)
+    rb.click(688, 469)
 
-  #Clica em obter
-  time.sleep(6)
-  rb.click(1072, 557)
+    #Clica em obter
+    time.sleep(6)
+    rb.click(1070, 515)
 
-  # #Confirma a "compra"
-  time.sleep(6)
-  rb.click(1014, 692)
+    # #Confirma a "compra"
+    time.sleep(6)
+    rb.click(1014, 692)
 
-  #Fecha card de agradecimento
-  time.sleep(6)
-  rb.click(945, 118)
+    #Fecha card de agradecimento
+    time.sleep(6)
+    rb.click(945, 118)
 
-  sendConfirmationPrint()
+    sendConfirmationPrint()
+  closeBrowser()
 
 def getThreeFreeGames():
+
+  screenMap = [[280, 530], [550, 530], [810, 530]]
+
+  # Abre o chrome
   rb.press('winleft')
   rb.write('chrome')
   rb.press('enter')
@@ -104,29 +113,31 @@ def getThreeFreeGames():
   # time.sleep(3)
   # rb.click(1017,570)
 
-  #Nova guia e direcionamento Epic Store
-  rb.hotkey('ctrl', 't')
-  rb.write(link)
-  rb.press('enter')
+  for game in screenMap:
+    #Nova guia e direcionamento Epic Store
+    rb.hotkey('ctrl', 't')
+    rb.write(link)
+    rb.press('enter')
 
-  #Clica no banner de game gratis
-  time.sleep(7)
-  rb.click(386, 523)
+    #Clica no banner de game gratis
+    time.sleep(7)
+    rb.click(game[0], game[1])
 
-  # Pop-up +18
-  time.sleep(5)
-  rb.click(688, 469)
+    # Pop-up +18
+    time.sleep(6)
+    rb.click(688, 469)
 
-  #Clica em obter
-  time.sleep(6)
-  rb.click(1072, 557)
+    #Clica em obter
+    time.sleep(6)
+    rb.click(1070, 515)
 
-  # #Confirma a "compra"
-  time.sleep(6)
-  rb.click(1014, 692)
+    # #Confirma a "compra"
+    time.sleep(6)
+    rb.click(1014, 692)
 
-  #Fecha card de agradecimento
-  time.sleep(6)
-  rb.click(945, 118)
+    #Fecha card de agradecimento
+    time.sleep(6)
+    rb.click(945, 118)
 
-  sendConfirmationPrint()
+    sendConfirmationPrint()
+  closeBrowser()
